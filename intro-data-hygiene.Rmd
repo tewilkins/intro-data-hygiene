@@ -1,0 +1,82 @@
+---
+title: "Introductory Data Hygiene"
+author: "Thomas Wilkins"
+date: "10/03/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Foreword
+
+I am also using this platform to make myself more familiar with R markdown, as I intend to use this as my primary word processor from now on.
+
+```{r cars}
+summary(cars)
+```
+
+## Introduction
+
+Data loss can be catastrophic for an individual or organisation. Fortunately, it can be avoided quite easily if your workflow incorporates some basic data hygiene practices. This document reflects my own experiences in setting up my workspace to work efficiently and securely. I'm sure there are many, many ways to achieve your own workflow, and I'm sure many are better, but I am making this document as a recommendation for PhD students who are somewhat familiar with R and Zotero, but perhaps new to Git. I also want to stress the importance of good data-handling habits. You will benefit from a Git-based workflow if you have ever done any of the following:
+
+> transferred or held important data files on a USB flash drive
+> made a copy of a document with a filename ending in _FINAL
+> emailed yourself a document to work on between computers
+
+In the context of day-to-day workflow, 'data hygiene' can mean a lot of things, such as database maintenance, data cleansing or software version control. In this case I want to put an emphasis on good workflow practices. For new PhD students, this is the workflow you'll need for the next 3-4 years, at least. Realistically, though, you'll be using some sort of systematic workflow for the rest of your working life. So now is a good time to start getting it right.
+
+The emergence of on-work restrictions imposed by various COVID-19 lockdown measures has changed the global culture of remote work. Working from home has become normalised in workplaces that do not require physical participation, e.g., computer- and telephone-centered occupations. Serendipitously, this has led to many benefits for those workers, such as the capacity to work outside of usual office hours, reduced/eliminated travel times and the freedom to create your own comfortable working spaces.  However, there are many problems associated with working from home, and many people have been left to feel isolated by their workplaces, and unable to establish healthy work-life balance [].
+
+It is now 2022, and many of the workplaces restrictions have been lifted and people can return safely to their offices. However, the benefits and downsides to working from home have been made manifest, and their is no clear winner either way; working from home really does make some people better workers [], but it's probably not going to work for an entire workforce. People now are probably going to be moving between home and workplaces, and that means a lot of data is going to be moved around! Without a proper workflow strategy, data can easily be lost through bad version control measures (e.g., multiple copies of the same file with conflicting contents), non-secure network connections (e.g., cafe internet cuts out while files are being pushed to a server), or maybe people will just drop and break their laptops more often from moving around all the time. Having a good workflow strategy will effectively mitigate all of these scenarios and many more.
+
+In this document I plan to cover the key considerations that you as a PhD student should take when interacting your digital workplace, and how to set yourself up with all the tools you'll need to keep your digital workplace in peak performance. The tools I recommend are GitHub or GitKraken, R and R Studio, and Zotero. I will explain why for each, but that doesn't mean other tools can't or shouldn't be used too. Once you have the basics sorted, you'll be able to incorporate everything else.
+
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+## You need a tidy directory
+
+This section is targeted to people that have a messy clutter of files in their Documents folder, or god forbid, their Desktop. Or have previously had a mess so unbearable that they then try to reorganise their files, only to find that they can't be opened in their parent program anymore for some weird reason. Or they have renamed a file and suddenly it won't open anymore. Or have opened a file, did some work, decided to rename the file in its folder, and then try save their work, only to find a corrupted file. These are all very easily avoidable situations. If you have a well-structured file directory that you can easily navigate, then you can probably skip to the next section.
+
+Your directory is the structure of your computer's folders and files. It is typically hierarchical, with each 'folder' or 'partition' containing a set of files and/or folders that meaningfully relate to each other. The top of this hierarchy is called the 'root'. The naming convention for each file and folder is also very informative but concise, and avoids unecessary punctuation and special characters. Yours may or may not be this way. Have a look at the following examples:
+
+BAD EXAMPLES - bad hierarchy
+
+
+GOOD EXAMPLES - good hierarchy
+
+But what makes it a good or bad directory? Why should a good directory be defined by its supposed neatness? Maybe you just keep your clothes in a big pile (see: floordrobe) and it works really well for you, horses for courses and the like. If you can find the file you want then it shouldn't matter where you put it or what you call it, right? 
+
+Well technically that's right, but also definitely wrong. Programs, files and folders in Finder (Mac), File Explorer (Windows) and Caja (Linux), or any other file manager software are presented to you in a very nice way. They have little icons telling you if its a program, file or folder, and most programs and file types have their own special icons. It lets you move files and folders around very freely; you can create them, delete them, rename them, drag and drop them, copy them, compress them, etc.  Your computer, on the other hand, sees your files in a much more cerebral and structured way; in order to run a program, it needs to access files from all over your directory. It does this by using a file path for each file and/or executable it uses, including the files you create using that software. Most of the time programs will have their executable files stored in hidden folders so you don't accidentally mess with their nuts and bolts, but some still install add-ins or packages in other directories (e.g., Zotero's BetterBibTex add-in). If you haphazardly delete or move these around you could really make life hard for yourself.
+
+The next reason relates to Git. When you set up your Git repository on your computer (which I will discuss in a later section) it creates a path that is linked to your repository. Your repository holds all of your previous versions, revisions and collaborations. If you move the folder, that link will be broken and two things will happen: 1. You won't be able to save or retrieve anything on GitHub until the link is fixed, and 2. Once it is fixed, you will create a branch (which I will discuss in a later section). It's not the end of the world if these happen, but data can be lost if these occurrences go unnoticed. My point is that it shouldn't happen at all if you are using your directory effectively.
+
+
+## Relative paths
+
+Another reason relates to your R (or other data handling software) workflow. If you aren't doing so already, you will very likely be opening files in R to process quite regularly. A common case is importing a .csv file as a dataframe to analyse with some statistical tests or make visual graphs. For each file you will need to specify a path to the file you wish to import. For example:
+ 
+
+```{r}
+
+```
+
+I have asked R to open two files. The first file exists within the same folder as the script, the second is nested within a path of folders, and the third starts from the local drive (this won't open!). The line getwd() tells R to only look in the folder that holds the R script file you have opened. In the first file case, only the filename was given and no path was specified, so it only looked in that folder. If you provide a path, it will start from this folder, and look 
+
+
+
+
+
+So I have 
+
+> Set up the folders you need early
+> Make folders within folders easy to follow
+> 
+
+
+
+
